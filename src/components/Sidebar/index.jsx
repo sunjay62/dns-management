@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { House, SignOut, Globe, WebhooksLogo, Key, DotOutline, CaretDown } from '@phosphor-icons/react';
+import { House, SignOut, Globe, WebhooksLogo, Key, DotOutline, CaretDown, ArrowFatLinesLeft } from '@phosphor-icons/react';
 import styles from './sidebar.module.css';
 import Image from 'next/image';
 
@@ -23,7 +23,6 @@ const Sidebar = ({ isSidebarOpen }) => {
 
   const handleDomainSettingsClick = () => {
     const newRotation = isDomainSettingsOpen ? 0 : 180;
-    console.log('newRotation:', newRotation);
     setIsDomainSettingsOpen(!isDomainSettingsOpen);
     setCaretRotation(newRotation);
   };

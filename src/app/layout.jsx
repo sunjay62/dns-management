@@ -1,3 +1,5 @@
+'use client';
+
 import { Gabarito } from 'next/font/google';
 import './globals.css';
 import Sidebar from '@/components/Sidebar';
@@ -5,17 +7,12 @@ import Navbar from '@/components/Navbar';
 
 const gabarito = Gabarito({ subsets: ['latin'] });
 
-export const metadata = {
-  title: 'DNS Management',
-  description: 'Domain Name System Management',
-};
-
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body className={`${gabarito.className} bg-color-primary`} suppressHydrationWarning={true}>
         <div className="main-container">
-          <div className="sidebar-container">
+          <div>
             <Sidebar />
           </div>
           <div className="content-container">
@@ -26,4 +23,6 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

@@ -4,7 +4,7 @@ import styles from './navbar.module.css';
 import { ArrowFatLinesLeft } from '@phosphor-icons/react';
 import Link from 'next/link';
 
-const Navbar = ({ toggleSidebar }) => {
+const Navbar = () => {
   const [isProfileMenuOpen, setProfileMenuOpen] = useState(false);
 
   const toggleProfileMenu = () => {
@@ -12,16 +12,16 @@ const Navbar = ({ toggleSidebar }) => {
   };
 
   return (
-    <nav className="flex md:flex-row flex-col justify-between md:items-center p-5 pl-3 gap-2 bg-color-dark">
+    <nav className={`${styles.navbar} flex md:flex-row flex-col justify-between md:items-center p-5 pl-2 gap-2 `}>
       {/* Left side - Toggle */}
-      <div className="flex items-center text-color-primary">
-        <button className="mr-4" onClick={toggleSidebar}>
+      <div className="flex items-center text-color-dark">
+        <button className="mr-4">
           <ArrowFatLinesLeft size={32} />
         </button>
       </div>
 
       {/* Right side - Profile Dropdown */}
-      <div className="relative text-color-primary">
+      <div className="relative text-color-dark">
         <button onClick={toggleProfileMenu}>Profile</button>
 
         {/* Dropdown menu */}
