@@ -1,4 +1,4 @@
-.containerRecord {
+.containerSetting {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.205);
   -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.205);
@@ -8,4 +8,10 @@
 
   border-radius: 15px;
   padding: 25px;
+}
+
+.containerSetting h1 {
+  margin-bottom: 15px;
+  font-size: 1.7rem;
+  font-weight: 600;
 }

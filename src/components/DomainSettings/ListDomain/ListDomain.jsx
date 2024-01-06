@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Table, Skeleton } from 'antd';
-import { BASE_URL } from '@/libs/api-libs';
-import axios from 'axios';
-import styles from './listdomain.module.css';
+import React from 'react';
+import { Table, Tooltip } from 'antd';
+import styles from './listdomain.module.scss';
+import { EditOutlined } from '@ant-design/icons';
+import DeleteButton from '../Components/useDelete';
+import { useData } from '../Components/useData';
+
+const deleteBtn = <span>Delete</span>;
+const editBtn = <span>Edit</span>;
 
 const ListDomain = () => {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const { data, isLoading, refetch } = useData();
+  const loading = isLoading;
 
   const columns = [
     {
@@ -20,11 +24,7 @@ const ListDomain = () => {
       dataIndex: 'name',
       key: 'name',
     },
-    {
-      title: 'Zone Name',
-      dataIndex: 'zone_name',
-      key: 'zone_name',
-    },
+
     {
       title: 'Type',
       dataIndex: 'type_name',
@@ -42,7 +42,7 @@ const ListDomain = () => {
     {
       title: 'Configure Ready',
       dataIndex: 'conf_ready',
-      width: '15%',
+      width: '13%',
       key: 'conf_ready',
       render: (confReady) => (
         <span
@@ -75,33 +75,38 @@ const ListDomain = () => {
         </span>
       ),
     },
+    {
+      title: 'Zone Name',
+      dataIndex: 'zone_name',
+      key: 'zone_name',
+    },
+    {
+      title: 'Action',
+      dataIndex: '',
+      width: '12%',
+      key: 'actionColumn',
+      render: (record) => (
+        <div className={styles.columnAction}>
+          <Tooltip placement="bottom" title={editBtn}>
+            <div className={styles.editButton}>
+              <EditOutlined />
+            </div>
+          </Tooltip>
+          <Tooltip placement="bottom" title={deleteBtn}>
+            <div className={styles.deleteButton}>
+              <DeleteButton id={record.id} onDeleteSuccess={refetch} />
+            </div>
+          </Tooltip>
+        </div>
+      ),
+    },
   ];
 
-  useEffect(() => {
-    fetchData();
-  }, []); // Empty dependency array ensures that this runs only once on mount
-
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get(`${BASE_URL}/domain`, {
-        headers: {
-          'x-api-key': 'R_DfwauR47lbvCj5KzIpefuKHqfJvFajId4uVK-BgW4',
-        },
-        withCredentials: true,
-      });
-
-      setData(response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <div className={`${styles.tableDomain}`}>
-      <Table dataSource={data} columns={columns} loading={loading} rowKey="id" />
+    <div className={`${styles.tableDomain} flex justify-between`}>
+      <div className="flex flex-col gap-2">
+        <Table dataSource={data} columns={columns} loading={loading} rowKey="id" />
+      </div>
     </div>
   );
 };
