@@ -35,3 +35,31 @@
     }
   }
 }
+
+.formContainer {
+  margin-top: 25px;
+
+  p {
+    margin-bottom: 5px;
+  }
+
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+
+    Input {
+      width: 65%;
+    }
+
+    .select {
+      width: 65%;
+    }
+
+    p {
+      color: red;
+      width: 30%;
+    }
+  }
+}

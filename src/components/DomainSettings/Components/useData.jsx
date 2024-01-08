@@ -15,8 +15,6 @@ export const useData = () => {
           withCredentials: true,
         });
 
-        console.log(response.data);
-
         // Return response.data only if the request was successful
         return response.data;
       } catch (error) {

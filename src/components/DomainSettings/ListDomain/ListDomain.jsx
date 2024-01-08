@@ -1,12 +1,12 @@
 import React from 'react';
 import { Table, Tooltip } from 'antd';
 import styles from './listdomain.module.scss';
-import { EditOutlined } from '@ant-design/icons';
 import DeleteButton from '../Components/useDelete';
+import GenerateButton from '../Components/useGenerate';
 import { useData } from '../Components/useData';
 
 const deleteBtn = <span>Delete</span>;
-const editBtn = <span>Edit</span>;
+const generateBtn = <span>Generate</span>;
 
 const ListDomain = () => {
   const { data, isLoading, refetch } = useData();
@@ -83,13 +83,13 @@ const ListDomain = () => {
     {
       title: 'Action',
       dataIndex: '',
-      width: '12%',
+      width: '13%',
       key: 'actionColumn',
       render: (record) => (
         <div className={styles.columnAction}>
-          <Tooltip placement="bottom" title={editBtn}>
-            <div className={styles.editButton}>
-              <EditOutlined />
+          <Tooltip placement="bottom" title={generateBtn}>
+            <div className={styles.generateButton}>
+              <GenerateButton id={record.id} onGenerateSuccess={refetch} />
             </div>
           </Tooltip>
           <Tooltip placement="bottom" title={deleteBtn}>

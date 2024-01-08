@@ -20,36 +20,45 @@ const useDelete = ({ id, onDeleteSuccess }) => {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes',
         cancelButtonText: 'No',
+        preConfirm: async () => {
+          try {
+            Swal.showLoading();
+
+            const response = await axios.delete(`${BASE_URL}/domain`, {
+              headers: {
+                'x-api-key': 'R_DfwauR47lbvCj5KzIpefuKHqfJvFajId4uVK-BgW4',
+              },
+              withCredentials: true,
+              data: formData,
+            });
+
+            if (response.status === 200) {
+              Swal.hideLoading();
+              return true; // Proceed with closing the modal
+            } else {
+              throw new Error('Failed to delete');
+            }
+          } catch (error) {
+            Swal.hideLoading();
+            Swal.showValidationMessage(`Error: ${error.message}`);
+            console.error('Error deleting site:', error.message);
+          }
+        },
       });
 
       if (result.isConfirmed) {
-        const response = await axios.delete(`${BASE_URL}/domain`, {
-          headers: {
-            'x-api-key': 'R_DfwauR47lbvCj5KzIpefuKHqfJvFajId4uVK-BgW4',
-          },
-          withCredentials: true,
-          data: formData,
+        Swal.fire({
+          icon: 'success',
+          title: 'Delete Successfully',
         });
-
-        if (response.status === 200) {
-          Swal.fire({
-            icon: 'success',
-            title: 'Delete Successfully',
-          });
-          onDeleteSuccess();
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Failed to delete',
-          });
-        }
+        onDeleteSuccess();
       }
     } catch (error) {
-      console.error('Error deleting site:', error.message);
       Swal.fire({
         icon: 'error',
         title: 'An error occurred while deleting',
       });
+      console.error('Error deleting site:', error.message);
     }
   };
 

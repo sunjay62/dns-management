@@ -1,15 +1,34 @@
 'use client';
 
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { House, SignOut, Globe, WebhooksLogo, Key, DotOutline, CaretDown, ArrowFatLinesLeft } from '@phosphor-icons/react';
 import styles from './sidebar.module.css';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const Sidebar = ({ isSidebarOpen }) => {
   const [activeLink, setActiveLink] = React.useState(null);
   const [isDomainSettingsOpen, setIsDomainSettingsOpen] = React.useState(false);
   const [caretRotation, setCaretRotation] = React.useState(0);
+  const router = useRouter();
+
+  // console.log('Router Pathname in Render:', router.pathname);
+
+  useEffect(() => {
+    // Mendapatkan pathname dari URL
+    const currentPath = router.pathname;
+
+    // Memperbarui activeLink berdasarkan pathname
+    setActiveLink(currentPath);
+
+    // Menangani kasus khusus untuk Domain Settings
+    if (currentPath === '/create-domain' || currentPath === '/list-domain') {
+      setIsDomainSettingsOpen(true);
+    } else {
+      setIsDomainSettingsOpen(false);
+    }
+  }, []);
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
