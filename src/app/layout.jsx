@@ -1,6 +1,5 @@
 'use client';
 
-import { Gabarito } from 'next/font/google';
 import './globals.css';
 import Sidebar from '@/components/Sidebar';
 import Navbar from '@/components/Navbar';
@@ -16,13 +15,11 @@ const queryClient = new QueryClient({
   },
 });
 
-const gabarito = Gabarito({ subsets: ['latin'] });
-
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <QueryClientProvider client={queryClient}>
-        <body className={`${gabarito.className} bg-color-primary`} suppressHydrationWarning={true}>
+        <body className="bg-color-primary" suppressHydrationWarning={true}>
           <ToastContainer />
           <div className="main-container">
             <div>

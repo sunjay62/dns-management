@@ -181,7 +181,7 @@ const Form2 = () => {
       <Form.Item className={`${styles.itemContainer}`}>
         <p>Reverse Name</p>
         <div className={`${styles.inputContainer}`}>
-          <Select className={`${styles.select}`} placeholder="Select IPv4 or IPv6" onChange={handleIpVersionChange} value={ipVersion}>
+          <Select className={`${styles.select}`} onChange={handleIpVersionChange} value={ipVersion}>
             <Option value="ipv4">IPv4</Option>
             <Option value="ipv6">IPv6</Option>
           </Select>

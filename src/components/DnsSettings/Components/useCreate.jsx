@@ -5,7 +5,7 @@ import axios from 'axios';
 import { BASE_URL } from '@/libs/api-libs';
 
 const Create = ({ id, onCreateSuccess }) => {
-  const [recordType, setRecordType] = useState(null);
+  const [recordType, setRecordType] = useState('-- Select Type --');
   const [name, setName] = useState('');
   const [ttl, setTtl] = useState('');
   const [rdata, setRdata] = useState('');
@@ -75,7 +75,7 @@ const Create = ({ id, onCreateSuccess }) => {
         });
       }
       setName('');
-      setRecordType('');
+      setRecordType('-- Select Type --');
       setTtl('');
       setRdata('');
       setPriority('');
@@ -108,10 +108,10 @@ const Create = ({ id, onCreateSuccess }) => {
           <Select
             id="type"
             className="w-48"
-            showSearch
-            placeholder="Select a person"
             optionFilterProp="children"
+            showSearch
             onChange={onChange}
+            value={recordType}
             onSearch={onSearch}
             filterOption={filterOption}
             options={[
