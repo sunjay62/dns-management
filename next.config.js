@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  distDir: 'build', // Sesuaikan dengan nama direktori output Anda
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
