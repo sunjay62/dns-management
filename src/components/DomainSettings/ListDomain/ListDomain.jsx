@@ -18,6 +18,7 @@ const ListDomain = () => {
       dataIndex: 'id',
       key: 'id',
       width: '6%',
+      render: (text, record, index) => index + 1,
     },
     {
       title: 'Name',

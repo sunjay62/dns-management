@@ -1,0 +1,42 @@
+.tableDomain {
+  margin-top: 25px;
+
+  .activeButton {
+    background-color: #5999ff;
+    color: white;
+  }
+}
+
+.columnAction {
+  display: flex;
+  gap: 7px;
+  font-size: 1.2rem;
+
+  .generateButton {
+    color: rgb(0, 102, 255);
+    background-color: rgba(0, 102, 255, 0.15);
+    transition: all ease-in-out 0.2s;
+    border-radius: 5px;
+    padding: 0 5px 1px 5px;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+      background-color: rgba(0, 102, 255, 0.25);
+    }
+  }
+
+  .deleteButton {
+    color: rgba(255, 0, 0, 0.938);
+    background-color: rgba(255, 0, 0, 0.15);
+    transition: all ease-in-out 0.2s;
+    border-radius: 5px;
+    padding: 0 5px 1px 5px;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+      background-color: rgba(255, 0, 0, 0.25);
+    }
+  }
+}

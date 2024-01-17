@@ -3,21 +3,38 @@ import React, { useState } from 'react';
 import styles from './navbar.module.css';
 import { ArrowFatLinesLeft } from '@phosphor-icons/react';
 import Link from 'next/link';
+import useStore from '../Store';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isProfileMenuOpen, setProfileMenuOpen] = useState(false);
+  const [isArrowRotated, setArrowRotation] = useState(false);
+  const { toggleSidebar } = useStore();
 
   const toggleProfileMenu = () => {
     setProfileMenuOpen(!isProfileMenuOpen);
+  };
+
+  const toggleArrowRotation = () => {
+    setArrowRotation(!isArrowRotated);
   };
 
   return (
     <nav className={`${styles.navbar} flex md:flex-row flex-col justify-between md:items-center p-5 pl-2 gap-2 `}>
       {/* Left side - Toggle */}
       <div className="flex items-center text-color-dark">
-        <button className="mr-4">
-          <ArrowFatLinesLeft size={32} />
-        </button>
+        <motion.button
+          className="mr-4"
+          onClick={() => {
+            toggleSidebar();
+            toggleArrowRotation();
+          }}
+          whileHover={{ scale: 1.1 }}
+        >
+          <motion.div style={{ display: 'inline-block' }} animate={{ rotate: isArrowRotated ? 180 : 0 }} transition={{ duration: 0.3 }}>
+            <ArrowFatLinesLeft size={30} />
+          </motion.div>
+        </motion.button>
       </div>
 
       {/* Right side - Profile Dropdown */}

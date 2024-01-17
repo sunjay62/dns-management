@@ -1,0 +1,60 @@
+.dnsContainer {
+  min-height: 100vh;
+  height: max-content;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+
+  .top {
+    flex: 1;
+  }
+
+  .middle {
+    flex: 1;
+  }
+
+  .bottom {
+    flex: 1;
+  }
+
+  h2 {
+    color: #fff;
+    background-color: rgb(97, 146, 250);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+}
+
+.columnAction {
+  display: flex;
+  gap: 7px;
+  font-size: 1.2rem;
+
+  .generateButton {
+    color: rgb(0, 102, 255);
+    background-color: rgba(0, 102, 255, 0.15);
+    transition: all ease-in-out 0.2s;
+    border-radius: 5px;
+    padding: 0 5px 1px 5px;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+      background-color: rgba(0, 102, 255, 0.25);
+    }
+  }
+
+  .deleteButton {
+    color: rgba(255, 0, 0, 0.938);
+    background-color: rgba(255, 0, 0, 0.15);
+    transition: all ease-in-out 0.2s;
+    border-radius: 5px;
+    padding: 0 5px 1px 5px;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+      background-color: rgba(255, 0, 0, 0.25);
+    }
+  }
+}
