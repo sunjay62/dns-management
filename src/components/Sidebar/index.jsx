@@ -115,13 +115,13 @@ const Sidebar = () => {
         >
           <WebhooksLogo className="text-color-primary" size={24} /> <span className={`${isSidebarOpen ? '' : 'hidden'}`}>DNS Management</span>
         </Link>
-        <Link
-          href="/api-key"
-          className={`flex items-center gap-2 text-base border p-${isSidebarOpen ? '2' : '1'} rounded-lg ${activeLink === '/api-key' ? 'bg-color-hovertwo' : ''} hover:bg-color-hovertwo transition-all`}
-          onClick={() => handleLinkClick('/api-key')}
+        {/* <Link
+          href="/wysiwyg"
+          className={`flex items-center gap-2 text-base border p-${isSidebarOpen ? '2' : '1'} rounded-lg ${activeLink === '/wysiwyg' ? 'bg-color-hovertwo' : ''} hover:bg-color-hovertwo transition-all`}
+          onClick={() => handleLinkClick('/wysiwyg')}
         >
-          <Key className="text-color-primary" size={24} /> <span className={`${isSidebarOpen ? '' : 'hidden'}`}>Api Key</span>
-        </Link>
+          <Key className="text-color-primary" size={24} /> <span className={`${isSidebarOpen ? '' : 'hidden'}`}>Wysiwyg</span>
+        </Link> */}
       </div>
       <div className="flex flex-col flex-2">
         <Link href="/logout" className={`flex items-center gap-2 text-base border p-${isSidebarOpen ? '2' : '1'} rounded-lg hover:bg-color-danger transition-all`}>
